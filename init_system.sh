@@ -56,11 +56,12 @@ check_command
 echo ""
 
 echo "Setting dock icon size"
-gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 80
+gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 64
 check_command
 echo ""
 
 echo "Setting dock autohide"
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
 gsettings set org.gnome.shell.extensions.dash-to-dock autohide true
 check_command
 echo ""
@@ -106,3 +107,9 @@ check_command
 echo ""
 
 echo "All changes applied successfully"
+
+# Enable fractional scale setting
+#gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
+#gsettings set org.gnome.desktop.interface text-scaling-factor 0.75
+#gsettings set org.gnome.desktop.interface scaling-factor 1
+
