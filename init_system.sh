@@ -110,6 +110,5 @@ echo "All changes applied successfully"
 
 # Enable fractional scale setting
 #gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
-#gsettings set org.gnome.desktop.interface text-scaling-factor 0.75
-#gsettings set org.gnome.desktop.interface scaling-factor 1
+#Edit font size in org.gnome.desktop.interface
 
