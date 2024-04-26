@@ -56,7 +56,7 @@ check_command
 echo ""
 
 echo "Setting dock icon size"
-gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 64
+gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 80
 check_command
 echo ""
 
@@ -71,7 +71,7 @@ check_command
 echo ""
 
 echo "Setting dock background opacity"
-gsettings set org.gnome.shell.extensions.dash-to-dock background-opacity 0.2
+gsettings set org.gnome.shell.extensions.dash-to-dock background-opacity 0.1
 check_command
 echo ""
 
@@ -95,8 +95,13 @@ gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
 check_command
 echo ""
 
-echo "Setting german keyboard layout"
-gsettings set org.gnome.desktop.input-sources sources "[('xkb', 'de')]"
+echo "Setting workspace to false"
+gsettings set org.gnome.mutter dynamic-workspaces false
+check_command
+echo ""
+
+echo "Setting workspace to fixed number"
+gsettings set org.gnome.desktop.wm.preferences num-workspaces 1
 check_command
 echo ""
 
