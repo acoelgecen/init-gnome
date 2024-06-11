@@ -37,6 +37,7 @@ echo ""
 
 echo "Setting dark mode"
 gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-viridian-dark'
+#gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-viridian-white'
 check_command
 echo ""
 
@@ -104,6 +105,11 @@ echo ""
 echo "Setting workspace to fixed number"
 gsettings set org.gnome.desktop.wm.preferences num-workspaces 1
 check_command
+echo ""
+
+echo "Setting Files keyboard shortcut"
+gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>E']"
+check command
 echo ""
 
 echo "All changes applied successfully"
