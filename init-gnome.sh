@@ -152,7 +152,7 @@ sleep 1
 
 echo -e "${YELLOW}Setting Files keyboard shortcut${NC}"
 gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>E']"
-check command
+check_command
 echo ""
 
 sleep 1
