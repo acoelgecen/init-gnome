@@ -163,4 +163,3 @@ echo -e "${YELLOW}All changes applied successfully${NC}"
 #gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
 #Edit font size in org.gnome.desktop.interface
 #gsettings set org.gnome.desktop.background picture-uri "file:///usr/share/backgrounds/gnome/adwaita-night.jpg"
-
