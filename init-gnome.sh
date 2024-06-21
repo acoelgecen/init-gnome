@@ -14,12 +14,6 @@ GREEN='\033[0;32m'  # Green color
 YELLOW='\033[1;33m' # Yellow color
 NOCOLOR='\033[0m'   # No color / reset ANSI code
 
-# Enable sudo in cache
-echo -e "${YELLOW}This script requires sudo privileges. Please enter your password.${NOCOLOR}"
-sudo -v
-check_command
-echo ""
-
 # The commands settings for gnome
 echo -e "${YELLOW}Disabling home folder${NOCOLOR}"
 gsettings set org.gnome.shell.extensions.ding show-home false
@@ -41,6 +35,7 @@ check_command
 echo ""
 
 sleep 1
+
 
 echo -e "${YELLOW}Adding weekdate to calender${NOCOLOR}"
 gsettings set org.gnome.desktop.calendar show-weekdate true
@@ -163,8 +158,8 @@ echo ""
 
 sleep 1
 
-sudo apt install curl -y
 curl -o ~/Downloads/ubuntu_wallpaper.jpg https://raw.githubusercontent.com/acolgecen/wallpaper/main/ubuntu/ubuntu_wallpaper.jpg
+#curl -o ~/Downloads/ubuntu_wallpaper.jpg https://raw.githubusercontent.com/acolgecen/wallpaper/main/ubuntu/ubuntu_wallpaper.jpg
 gsettings set org.gnome.desktop.background picture-uri "file://$HOME/Downloads/ubuntu_wallpaper.jpg"
 check_command
 echo ""
