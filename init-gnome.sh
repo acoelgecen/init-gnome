@@ -158,8 +158,8 @@ echo ""
 
 sleep 1
 
-#curl -o ~/Downloads/ubuntu_wallpaper.jpg https://raw.githubusercontent.com/acolgecen/wallpaper/main/ubuntu/ubuntu_black.jpg
-curl -o ~/Downloads/ubuntu_wallpaper.jpg https://raw.githubusercontent.com/acolgecen/wallpaper/main/ubuntu/ubuntu_orange.jpg
+curl -o ~/Downloads/ubuntu_wallpaper.jpg https://raw.githubusercontent.com/acolgecen/wallpaper/main/ubuntu/ubuntu_black.jpg
+#curl -o ~/Downloads/ubuntu_wallpaper.jpg https://raw.githubusercontent.com/acolgecen/wallpaper/main/ubuntu/ubuntu_orange.jpg
 gsettings set org.gnome.desktop.background picture-uri "file://$HOME/Downloads/ubuntu_wallpaper.jpg"
 check_command
 echo ""
