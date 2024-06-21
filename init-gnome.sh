@@ -158,8 +158,8 @@ echo ""
 
 sleep 1
 
-curl -o ~/Downloads/ubuntu_wallpaper.jpg https://raw.githubusercontent.com/acolgecen/wallpaper/main/ubuntu/ubuntu_black.jpg
-#curl -o ~/Downloads/ubuntu_wallpaper.jpg https://raw.githubusercontent.com/acolgecen/wallpaper/main/ubuntu/ubuntu_wallpaper.jpg
+#curl -o ~/Downloads/ubuntu_wallpaper.jpg https://raw.githubusercontent.com/acolgecen/wallpaper/main/ubuntu/ubuntu_black.jpg
+curl -o ~/Downloads/ubuntu_wallpaper.jpg https://raw.githubusercontent.com/acolgecen/wallpaper/main/ubuntu/ubuntu_orange.jpg
 gsettings set org.gnome.desktop.background picture-uri "file://$HOME/Downloads/ubuntu_wallpaper.jpg"
 check_command
 echo ""
@@ -168,7 +168,6 @@ sleep 1
 
 echo -e "${YELLOW}All changes applied successfully${NOCOLOR}"
 
-# Enable fractional scale setting
+#Enable fractional scale setting
 #gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
 #Edit font size in org.gnome.desktop.interface
-#gsettings set org.gnome.desktop.background picture-uri "file:///usr/share/backgrounds/gnome/adwaita-night.jpg"
