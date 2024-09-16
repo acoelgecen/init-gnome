@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Define the color variable
+wallpaper="orange"
+
 # Function to check command success
 check_command() {
     if [ $? -eq 0 ]; then
@@ -20,7 +23,7 @@ gsettings set org.gnome.shell.extensions.ding show-home false
 check_command
 echo ""
 
-sleep 1
+
 
 # Add battery percentage to the top panel
 echo -e "${YELLOW}Adding top panel battery percentage${NOCOLOR}"
@@ -28,7 +31,7 @@ gsettings set org.gnome.desktop.interface show-battery-percentage true
 check_command
 echo ""
 
-sleep 1
+
 
 # Disable date in the top panel clock
 echo -e "${YELLOW}Disabling top panel date${NOCOLOR}"
@@ -36,7 +39,7 @@ gsettings set org.gnome.desktop.interface clock-show-date false
 check_command
 echo ""
 
-sleep 1
+
 
 # Add week number to the calendar
 echo -e "${YELLOW}Adding weekdate to calendar${NOCOLOR}"
@@ -44,7 +47,7 @@ gsettings set org.gnome.desktop.calendar show-weekdate true
 check_command
 echo ""
 
-sleep 1
+
 
 # Set Tilix as the default terminal
 echo -e "${YELLOW}Tilix as default terminal${NOCOLOR}"
@@ -52,7 +55,7 @@ gsettings set org.gnome.desktop.default-applications.terminal exec 'tilix'
 check_command
 echo ""
 
-sleep 1
+
 
 # Set dark mode theme
 echo -e "${YELLOW}Setting dark mode${NOCOLOR}"
@@ -60,7 +63,7 @@ gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-viridian-dark'
 check_command
 echo ""
 
-sleep 1
+
 
 # Set Viridian icon theme
 echo -e "${YELLOW}Setting viridian mode${NOCOLOR}"
@@ -68,7 +71,7 @@ gsettings set org.gnome.desktop.interface icon-theme 'Yaru-viridian'
 check_command
 echo ""
 
-sleep 1
+
 
 # Move the "Show Applications" button to the top of the dock
 echo -e "${YELLOW}Setting show applications to right${NOCOLOR}"
@@ -76,7 +79,7 @@ gsettings set org.gnome.shell.extensions.dash-to-dock show-apps-at-top true
 check_command
 echo ""
 
-sleep 1
+
 
 # Set the dock position to the bottom
 echo -e "${YELLOW}Setting dock position to bottom${NOCOLOR}"
@@ -84,7 +87,7 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'BOTTOM'
 check_command
 echo ""
 
-sleep 1
+
 
 # Set the dock icon size (Edit to wish)
 echo -e "${YELLOW}Setting dock icon size${NOCOLOR}"
@@ -92,7 +95,7 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 64
 check_command
 echo ""
 
-sleep 1
+
 
 # Enable dock autohide
 echo -e "${YELLOW}Setting dock autohide${NOCOLOR}"
@@ -101,7 +104,7 @@ gsettings set org.gnome.shell.extensions.dash-to-dock autohide true
 check_command
 echo ""
 
-sleep 1
+
 
 # Set dock transparency mode to fixed
 echo -e "${YELLOW}Setting dock transparency to fixed${NOCOLOR}"
@@ -109,7 +112,7 @@ gsettings set org.gnome.shell.extensions.dash-to-dock transparency-mode 'FIXED'
 check_command
 echo ""
 
-sleep 1
+
 
 # Set dock background opacity (Edit to wish)
 echo -e "${YELLOW}Setting dock background opacity${NOCOLOR}"
@@ -117,7 +120,7 @@ gsettings set org.gnome.shell.extensions.dash-to-dock background-opacity 0.1
 check_command
 echo ""
 
-sleep 1
+
 
 # Hide the trash icon from the dock
 echo -e "${YELLOW}Setting dock show trash to false${NOCOLOR}"
@@ -125,7 +128,7 @@ gsettings set org.gnome.shell.extensions.dash-to-dock show-trash false
 check_command
 echo ""
 
-sleep 1
+
 
 # Hide mounted drives from the dock
 echo -e "${YELLOW}Setting dock show mounts to false${NOCOLOR}"
@@ -133,7 +136,7 @@ gsettings set org.gnome.shell.extensions.dash-to-dock show-mounts false
 check_command
 echo ""
 
-sleep 1
+
 
 # Set dock running indicator color to dominant color
 echo -e "${YELLOW}Setting dock running indicator dominant color${NOCOLOR}"
@@ -141,7 +144,7 @@ gsettings set org.gnome.shell.extensions.dash-to-dock running-indicator-dominant
 check_command
 echo ""
 
-sleep 1
+
 
 # Set dock panel mode to extend height
 echo -e "${YELLOW}Setting dock panel mode${NOCOLOR}"
@@ -149,7 +152,7 @@ gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
 check_command
 echo ""
 
-sleep 1
+
 
 # Disable dynamic workspaces
 echo -e "${YELLOW}Setting workspace to false${NOCOLOR}"
@@ -157,7 +160,7 @@ gsettings set org.gnome.mutter dynamic-workspaces false
 check_command
 echo ""
 
-sleep 1
+
 
 # Set the number of workspaces to 1
 echo -e "${YELLOW}Setting workspace to fixed number${NOCOLOR}"
@@ -165,7 +168,7 @@ gsettings set org.gnome.desktop.wm.preferences num-workspaces 1
 check_command
 echo ""
 
-sleep 1
+
 
 # Set keyboard shortcut for opening the Files application
 echo -e "${YELLOW}Setting Files keyboard shortcut${NOCOLOR}"
@@ -173,19 +176,15 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>E']"
 check_command
 echo ""
 
-sleep 1
+
 
 # Download and set wallpaper
-curl -o ~/Pictures/Wallpapers/ubuntu_wallpaper.jpg https://raw.githubusercontent.com/acolgecen/wallpaper/main/ubuntu/ubuntu_black.jpg
-gsettings set org.gnome.desktop.background picture-uri "file://$HOME/Downloads/ubuntu_wallpaper.jpg"
+mkdir -p ~/Pictures/Wallpapers/
+curl -o ~/Pictures/Wallpapers/ubuntu_wallpaper.jpg https://raw.githubusercontent.com/acolgecen/wallpaper/main/ubuntu/ubuntu_${wallpaper}.jpg
+gsettings set org.gnome.desktop.background picture-uri "file://$HOME/Pictures/Wallpapers/ubuntu_wallpaper.jpg"
 check_command
 echo ""
 
-sleep 1
-
-echo -e "${YELLOW}All changes applied successfully${NOCOLOR}"
 
 
-#Enable fractional scale setting
-#gsettings set org.gnome.mutter experimental-features "['scale-monitor-framebuffer']"
-#Edit font size in org.gnome.desktop.interface
+# echo -e "${YELLOW}All changes applied successfully${NOCOLOR}"
