@@ -91,7 +91,7 @@ echo ""
 
 # Set the dock icon size (Edit to wish)
 echo -e "${YELLOW}Setting dock icon size${NOCOLOR}"
-gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 64
+gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 28
 check_command
 echo ""
 
