@@ -51,7 +51,7 @@ echo ""
 
 # Set Tilix as the default terminal
 echo -e "${YELLOW}Tilix as default terminal${NOCOLOR}"
-gsettings set org.gnome.desktop.default-applications.terminal exec 'tilix'
+gsettings set org.gnome.desktop.default-applications.terminal exec 'warp-terminal'
 check_command
 echo ""
 
