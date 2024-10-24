@@ -1,5 +1,5 @@
-# init-system
-This script makes your gnome a better working station.
+# Overview
+This script customizes the GNOME desktop environment by modifying various settings, including appearance, behavior, and keybindings. It also allows the user to select a color for the wallpaper and applies various system preferences. Below is a step-by-step explanation of what the script does.
 
-## Second script
-This is the second script you should run.
+## Script order
+Before running this script make sure that you have runnend `init-devtools` first. 
