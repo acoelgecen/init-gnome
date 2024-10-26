@@ -16,11 +16,11 @@ NOCOLOR='\033[0m'   # No color / reset ANSI code
 
 # Ask the user to choose a wallpaper color
 echo -e "${YELLOW}Which color do you want for your wallpaper?${NOCOLOR}"
-echo -e "${YELLOW}Choose between red, orange, or blue:${NOCOLOR}"
+echo -e "${YELLOW}Choose between black, orange, or blue:${NOCOLOR}"
 read -p "Enter colour: " input_colour
 
 # Ensure the input is valid
-if [[ "$input_colour" != "red" && "$input_colour" != "orange" && "$input_colour" != "blue" ]]; then
+if [[ "$input_colour" != "black" && "$input_colour" != "orange" && "$input_colour" != "blue" ]]; then
     echo -e "${YELLOW}Invalid color choice. Defaulting to orange.${NOCOLOR}"
     wallpaper="orange"
 else
