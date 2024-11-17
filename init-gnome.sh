@@ -16,11 +16,14 @@ NOCOLOR='\033[0m'   # No color / reset ANSI code
 
 # Ask the user to choose a wallpaper color
 echo -e "${YELLOW}Which color do you want for your wallpaper?${NOCOLOR}"
-echo -e "${YELLOW}Choose between black, orange, or blue:${NOCOLOR}"
+echo -e "${YELLOW}- black${NOCOLOR}"
+echo -e "${YELLOW}- orange${NOCOLOR}"
+echo -e "${YELLOW}- blue${NOCOLOR}"
+echo -e "${YELLOW}- none${NOCOLOR}"
 read -p "Enter colour: " input_colour
 
 # Ensure the input is valid
-if [[ "$input_colour" != "black" && "$input_colour" != "orange" && "$input_colour" != "blue" ]]; then
+if [[ "$input_colour" != "black" && "$input_colour" != "orange" && "$input_colour" != "blue" && "$input_colour" != "none" ]]; then
     echo -e "${YELLOW}Invalid color choice. Defaulting to orange.${NOCOLOR}"
     wallpaper="orange"
 else
@@ -53,8 +56,8 @@ gsettings set org.gnome.desktop.calendar show-weekdate true
 check_command
 echo ""
 
-# Set wrap as the default terminal
-echo -e "${YELLOW}Wrap as default terminal${NOCOLOR}"
+# Set warp as the default terminal
+echo -e "${YELLOW}Setting warp as default terminal${NOCOLOR}"
 gsettings set org.gnome.desktop.default-applications.terminal exec 'warp-terminal'
 check_command
 echo ""
@@ -72,7 +75,7 @@ check_command
 echo ""
 
 # Move the "Show Applications" button to the top of the dock
-echo -e "${YELLOW}Setting show applications to right${NOCOLOR}"
+echo -e "${YELLOW}Setting show applications to top${NOCOLOR}"
 gsettings set org.gnome.shell.extensions.dash-to-dock show-apps-at-top true
 check_command
 echo ""
@@ -150,9 +153,13 @@ gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>E']"
 check_command
 echo ""
 
-# Download and set wallpaper based on the selected color
-mkdir -p ~/Pictures/Wallpapers/
-curl -o ~/Pictures/Wallpapers/ubuntu_wallpaper.jpg "https://raw.githubusercontent.com/acolgecen/wallpaper/main/ubuntu/ubuntu_${wallpaper}.jpg"
-gsettings set org.gnome.desktop.background picture-uri "file://$HOME/Pictures/Wallpapers/ubuntu_wallpaper.jpg"
-check_command
-echo ""
+# Download and set wallpaper based on the selected color, unless "none" is selected
+if [[ "$wallpaper" != "none" ]]; then
+    mkdir -p ~/Pictures/Wallpapers/
+    curl -o ~/Pictures/Wallpapers/ubuntu_wallpaper.jpg "https://raw.githubusercontent.com/acolgecen/wallpaper/main/ubuntu/ubuntu_${wallpaper}.jpg"
+    gsettings set org.gnome.desktop.background picture-uri "file://$HOME/Pictures/Wallpapers/ubuntu_wallpaper.jpg"
+    check_command
+    echo ""
+else
+    echo -e "${YELLOW}No changes made to the wallpaper.${NOCOLOR}"
+fi
