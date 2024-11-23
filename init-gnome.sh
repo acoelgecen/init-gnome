@@ -87,11 +87,18 @@ gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'BOTTOM'
 check_command
 echo ""
 
-# Set the dock icon size (Edit to wish)
-echo -e "${YELLOW}Setting dock icon size${NOCOLOR}"
-gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 64
-check_command
-echo ""
+# Prompt user for dock icon size
+echo -e "${YELLOW}Enter your desired dock icon size (e.g., 32, 48, 64, 96):${NOCOLOR}"
+read -p "Dock icon size: " dock_icon_size
+
+if [[ "$dock_icon_size" =~ ^[0-9]+$ ]]; then
+    echo -e "${YELLOW}Setting dock icon size to ${dock_icon_size}${NOCOLOR}"
+    gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size "$dock_icon_size"
+    check_command
+    echo ""
+else
+    echo -e "${YELLOW}Invalid input. Dock icon size not changed.${NOCOLOR}"
+fi
 
 # Enable dock autohide
 echo -e "${YELLOW}Setting dock autohide${NOCOLOR}"
@@ -106,11 +113,18 @@ gsettings set org.gnome.shell.extensions.dash-to-dock transparency-mode 'FIXED'
 check_command
 echo ""
 
-# Set dock background opacity (Edit to wish)
-echo -e "${YELLOW}Setting dock background opacity${NOCOLOR}"
-gsettings set org.gnome.shell.extensions.dash-to-dock background-opacity 0.1
-check_command
-echo ""
+# Prompt user for dock background opacity
+echo -e "${YELLOW}Enter your desired dock background opacity (e.g., 0, 0.5, 1):${NOCOLOR}"
+read -p "Dock background opacity: " dock_opacity
+
+if [[ "$dock_opacity" =~ ^0(\.[0-9]+)?$|^1$ ]]; then
+    echo -e "${YELLOW}Setting dock background opacity to ${dock_opacity}${NOCOLOR}"
+    gsettings set org.gnome.shell.extensions.dash-to-dock background-opacity "$dock_opacity"
+    check_command
+    echo ""
+else
+    echo -e "${YELLOW}Invalid input. Dock background opacity not changed.${NOCOLOR}"
+fi
 
 # Hide the trash icon from the dock
 echo -e "${YELLOW}Setting dock show trash to false${NOCOLOR}"
@@ -164,3 +178,6 @@ if [[ "$wallpaper" != "none" ]]; then
 else
     echo -e "${YELLOW}No changes made to the wallpaper.${NOCOLOR}"
 fi
+
+
+
