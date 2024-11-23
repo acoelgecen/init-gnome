@@ -33,6 +33,32 @@ fi
 
 echo -e "${YELLOW}Setting wallpaper color to ${wallpaper}${NOCOLOR}"
 
+# Prompt user for dock icon size
+echo -e "${YELLOW}Enter your desired dock icon size (e.g., 32, 48, 64, 96):${NOCOLOR}"
+read -p "Dock icon size: " dock_icon_size
+
+if [[ "$dock_icon_size" =~ ^[0-9]+$ ]]; then
+    echo -e "${YELLOW}Setting dock icon size to ${dock_icon_size}${NOCOLOR}"
+    gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size "$dock_icon_size"
+    check_command
+    echo ""
+else
+    echo -e "${YELLOW}Invalid input. Dock icon size not changed.${NOCOLOR}"
+fi
+
+# Prompt user for dock background opacity
+echo -e "${YELLOW}Enter your desired dock background opacity (e.g., 0, 0.5, 1):${NOCOLOR}"
+read -p "Dock background opacity: " dock_opacity
+
+if [[ "$dock_opacity" =~ ^0(\.[0-9]+)?$|^1$ ]]; then
+    echo -e "${YELLOW}Setting dock background opacity to ${dock_opacity}${NOCOLOR}"
+    gsettings set org.gnome.shell.extensions.dash-to-dock background-opacity "$dock_opacity"
+    check_command
+    echo ""
+else
+    echo -e "${YELLOW}Invalid input. Dock background opacity not changed.${NOCOLOR}"
+fi
+
 # Disable home folder icon on the desktop
 echo -e "${YELLOW}Disabling home folder${NOCOLOR}"
 gsettings set org.gnome.shell.extensions.ding show-home false
@@ -75,31 +101,6 @@ gsettings set org.gnome.desktop.interface icon-theme 'Yaru-viridian'
 check_command
 echo ""
 
-# Move the "Show Applications" button to the top of the dock
-echo -e "${YELLOW}Setting show applications to top${NOCOLOR}"
-gsettings set org.gnome.shell.extensions.dash-to-dock show-apps-at-top true
-check_command
-echo ""
-
-# Set the dock position to the bottom
-echo -e "${YELLOW}Setting dock position to bottom${NOCOLOR}"
-gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'BOTTOM'
-check_command
-echo ""
-
-# Prompt user for dock icon size
-echo -e "${YELLOW}Enter your desired dock icon size (e.g., 32, 48, 64, 96):${NOCOLOR}"
-read -p "Dock icon size: " dock_icon_size
-
-if [[ "$dock_icon_size" =~ ^[0-9]+$ ]]; then
-    echo -e "${YELLOW}Setting dock icon size to ${dock_icon_size}${NOCOLOR}"
-    gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size "$dock_icon_size"
-    check_command
-    echo ""
-else
-    echo -e "${YELLOW}Invalid input. Dock icon size not changed.${NOCOLOR}"
-fi
-
 # Enable dock autohide
 echo -e "${YELLOW}Setting dock autohide${NOCOLOR}"
 gsettings set org.gnome.shell.extensions.dash-to-dock dock-fixed false
@@ -113,18 +114,17 @@ gsettings set org.gnome.shell.extensions.dash-to-dock transparency-mode 'FIXED'
 check_command
 echo ""
 
-# Prompt user for dock background opacity
-echo -e "${YELLOW}Enter your desired dock background opacity (e.g., 0, 0.5, 1):${NOCOLOR}"
-read -p "Dock background opacity: " dock_opacity
+# Move the "Show Applications" button to the top of the dock
+echo -e "${YELLOW}Setting show applications to top${NOCOLOR}"
+gsettings set org.gnome.shell.extensions.dash-to-dock show-apps-at-top true
+check_command
+echo ""
 
-if [[ "$dock_opacity" =~ ^0(\.[0-9]+)?$|^1$ ]]; then
-    echo -e "${YELLOW}Setting dock background opacity to ${dock_opacity}${NOCOLOR}"
-    gsettings set org.gnome.shell.extensions.dash-to-dock background-opacity "$dock_opacity"
-    check_command
-    echo ""
-else
-    echo -e "${YELLOW}Invalid input. Dock background opacity not changed.${NOCOLOR}"
-fi
+# Set the dock position to the bottom
+echo -e "${YELLOW}Setting dock position to bottom${NOCOLOR}"
+gsettings set org.gnome.shell.extensions.dash-to-dock dock-position 'BOTTOM'
+check_command
+echo ""
 
 # Hide the trash icon from the dock
 echo -e "${YELLOW}Setting dock show trash to false${NOCOLOR}"
@@ -158,7 +158,7 @@ echo ""
 
 # Set the number of workspaces to 1
 echo -e "${YELLOW}Setting workspace to fixed number${NOCOLOR}"
-gsettings set org.gnome.desktop.wm.preferences num-workspaces 1
+gsettings set org.gnome.desktop.wm.preferences num-workspaces 2
 check_command
 echo ""
 
