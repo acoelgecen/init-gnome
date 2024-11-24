@@ -3,3 +3,6 @@ This script customizes the GNOME desktop environment by modifying various settin
 
 ## Script order
 Before running this script make sure that you have runnend `init-devtools` first. 
+
+# To-do list
+- Add if you want dark or light theme.
