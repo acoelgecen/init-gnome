@@ -89,9 +89,15 @@ gsettings set org.gnome.desktop.default-applications.terminal exec 'warp-termina
 check_command
 echo ""
 
-# Set dark mode theme
-echo -e "${YELLOW}Setting dark mode${NOCOLOR}"
+# Set yaru viridian colour  
+echo -e "${YELLOW}Setting yaru-viridian mode${NOCOLOR}"
 gsettings set org.gnome.desktop.interface gtk-theme 'Yaru-viridian-dark'
+check_command
+echo ""
+
+# Set dark mode style
+echo -e "${YELLOW}Setting dark mode${NOCOLOR}"
+gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark' #default = white
 check_command
 echo ""
 
