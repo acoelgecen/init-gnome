@@ -33,6 +33,20 @@ fi
 
 echo -e "${YELLOW}Setting wallpaper color to ${wallpaper}${NOCOLOR}"
 
+# Download and set wallpaper based on the selected color, unless "none" is selected
+if [[ "$wallpaper" != "none" ]]; then
+    mkdir -p ~/Pictures/Wallpapers/
+    curl -o ~/Pictures/Wallpapers/ubuntu_wallpaper.jpg "https://raw.githubusercontent.com/acolgecen/wallpaper/main/ubuntu/ubuntu_${wallpaper}.jpg"
+    gsettings set org.gnome.desktop.background picture-uri "file://$HOME/Pictures/Wallpapers/ubuntu_wallpaper.jpg"
+    gsettings set org.gnome.desktop.background picture-uri-dark "file://$HOME/Pictures/Wallpapers/ubuntu_wallpaper.jpg"
+    check_command
+    echo ""
+else
+    echo -e "${YELLOW}No changes made to the wallpaper.${NOCOLOR}"
+fi
+
+
+
 # Prompt user for dock icon size
 echo -e "${YELLOW}Enter your desired dock icon size (e.g., 32, 48, 64, 96):${NOCOLOR}"
 read -p "Dock icon size: " dock_icon_size
@@ -164,7 +178,7 @@ echo ""
 
 # Set the number of workspaces to 1
 echo -e "${YELLOW}Setting workspace to fixed number${NOCOLOR}"
-gsettings set org.gnome.desktop.wm.preferences num-workspaces 2
+gsettings set org.gnome.desktop.wm.preferences num-workspaces 1
 check_command
 echo ""
 
@@ -173,17 +187,3 @@ echo -e "${YELLOW}Setting Files keyboard shortcut${NOCOLOR}"
 gsettings set org.gnome.settings-daemon.plugins.media-keys home "['<Super>E']"
 check_command
 echo ""
-
-# Download and set wallpaper based on the selected color, unless "none" is selected
-if [[ "$wallpaper" != "none" ]]; then
-    mkdir -p ~/Pictures/Wallpapers/
-    curl -o ~/Pictures/Wallpapers/ubuntu_wallpaper.jpg "https://raw.githubusercontent.com/acolgecen/wallpaper/main/ubuntu/ubuntu_${wallpaper}.jpg"
-    gsettings set org.gnome.desktop.background picture-uri "file://$HOME/Pictures/Wallpapers/ubuntu_wallpaper.jpg"
-    check_command
-    echo ""
-else
-    echo -e "${YELLOW}No changes made to the wallpaper.${NOCOLOR}"
-fi
-
-
-
