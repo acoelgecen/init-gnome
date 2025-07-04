@@ -36,7 +36,7 @@ echo -e "${YELLOW}Setting wallpaper color to ${wallpaper}${NOCOLOR}"
 # Download and set wallpaper based on the selected color, unless "none" is selected
 if [[ "$wallpaper" != "none" ]]; then
     mkdir -p ~/Pictures/Wallpapers/
-    curl -o ~/Pictures/Wallpapers/ubuntu_wallpaper.jpg "https://raw.githubusercontent.com/acolgecen/wallpaper/main/ubuntu/ubuntu_${wallpaper}.jpg"
+    curl -o ~/Pictures/Wallpapers/ubuntu_wallpaper.jpg "https://raw.githubusercontent.com/acoelgecen/wallpaper/main/ubuntu/ubuntu_${wallpaper}.jpg"
     gsettings set org.gnome.desktop.background picture-uri "file://$HOME/Pictures/Wallpapers/ubuntu_wallpaper.jpg"
     gsettings set org.gnome.desktop.background picture-uri-dark "file://$HOME/Pictures/Wallpapers/ubuntu_wallpaper.jpg"
     check_command
