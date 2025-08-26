@@ -37,15 +37,15 @@ echo -e "${YELLOW}Setting wallpaper color to ${wallpaper}${NOCOLOR}"
 if [[ "$wallpaper" != "none" ]]; then
     mkdir -p ~/Pictures/Wallpapers/
     curl -o ~/Pictures/Wallpapers/ubuntu_wallpaper.jpg "https://raw.githubusercontent.com/acoelgecen/wallpaper/main/ubuntu/ubuntu_${wallpaper}.jpg"
+
     gsettings set org.gnome.desktop.background picture-uri "file://$HOME/Pictures/Wallpapers/ubuntu_wallpaper.jpg"
     gsettings set org.gnome.desktop.background picture-uri-dark "file://$HOME/Pictures/Wallpapers/ubuntu_wallpaper.jpg"
+
     check_command
     echo ""
 else
     echo -e "${YELLOW}No changes made to the wallpaper.${NOCOLOR}"
 fi
-
-
 
 # Prompt user for dock icon size
 echo -e "${YELLOW}Enter your desired dock icon size (e.g., 32, 48, 64, 96):${NOCOLOR}"
