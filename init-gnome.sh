@@ -14,6 +14,12 @@ GREEN='\033[0;32m'  # Green color for success messages
 YELLOW='\033[1;33m' # Yellow color for informational messages
 NOCOLOR='\033[0m'   # No color / reset ANSI code
 
+# Installing curl
+echo -e "${YELLOW}Installing curl${NOCOLOR}"
+sudo apt install curl >/dev/null 2>&1
+check_command
+echo ""
+
 # Ask the user to choose a wallpaper color
 echo -e "${YELLOW}Which color do you want for your wallpaper?${NOCOLOR}"
 echo -e "${YELLOW}- black${NOCOLOR}"
@@ -34,12 +40,6 @@ while true; do
 done
 
 echo -e "${YELLOW}Setting wallpaper color to ${wallpaper}${NOCOLOR}"
-echo ""
-
-# Installing curl
-echo -e "${YELLOW}Installing curl${NOCOLOR}"
-sudo apt install curl
-check_command
 echo ""
 
 # Download and set wallpaper based on the selected color, unless "none" is selected
