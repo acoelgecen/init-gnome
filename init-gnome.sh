@@ -21,17 +21,26 @@ echo -e "${YELLOW}- white${NOCOLOR}"
 echo -e "${YELLOW}- orange${NOCOLOR}"
 echo -e "${YELLOW}- blue${NOCOLOR}"
 echo -e "${YELLOW}- none${NOCOLOR}"
-read -p "Enter colour: " input_colour
 
-# Ensure the input is valid
-if [[ "$input_colour" != "black" && "$input_colour" != "white" && "$input_colour" != "orange" && "$input_colour" != "blue" && "$input_colour" != "none" ]]; then
-    echo -e "${YELLOW}Invalid color choice. Defaulting to orange.${NOCOLOR}"
-    wallpaper="orange"
-else
-    wallpaper="$input_colour"
-fi
+# Loop until a valid color is entered
+while true; do
+    read -p "Enter colour: " input_colour
+    if [[ "$input_colour" == "black" || "$input_colour" == "white" || "$input_colour" == "orange" || "$input_colour" == "blue" || "$input_colour" == "none" ]]; then
+        wallpaper="$input_colour"
+        break
+    else
+        echo -e "${YELLOW}I think you made a typo. Please enter your desired colour.${NOCOLOR}"
+    fi
+done
 
 echo -e "${YELLOW}Setting wallpaper color to ${wallpaper}${NOCOLOR}"
+echo ""
+
+# Installing curl
+echo -e "${YELLOW}Installing curl${NOCOLOR}"
+sudo apt install curl
+check_command
+echo ""
 
 # Download and set wallpaper based on the selected color, unless "none" is selected
 if [[ "$wallpaper" != "none" ]]; then
