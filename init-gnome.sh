@@ -14,6 +14,12 @@ GREEN='\033[0;32m'  # Green color for success messages
 YELLOW='\033[1;33m' # Yellow color for informational messages
 NOCOLOR='\033[0m'   # No color / reset ANSI code
 
+# Ask for sudo upfront
+echo -e "${YELLOW}This script requires sudo privileges. Please enter your password.${NOCOLOR}"
+sudo -v
+check_command
+echo ""
+
 # Installing curl
 echo -e "${YELLOW}Installing curl${NOCOLOR}"
 sudo apt install curl >/dev/null 2>&1
